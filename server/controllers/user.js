@@ -2,7 +2,7 @@ const User = require("../models/user")
 const bcryptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
-require("dotenv").config();
+require("dotenv").config({path:__dirname+'/../../.env'});
 
 
 
@@ -26,7 +26,7 @@ async function register(input){
     if(foundEmail)throw new Error("email ya en uso")
     const foundUsername = await User.findOne({username})
     if(foundUsername)throw new Error("usuario ya en uso")
-    console.log(foundEmail);
+    
 
     const salt = await  bcryptjs.genSaltSync(10)
     newUser.password = await bcryptjs.hash(password, salt)
@@ -34,6 +34,7 @@ async function register(input){
     try {
         const user = new User(newUser)
         user.save()
+        console.log(user)
         return user
     } catch (error) {
         console.log(error);
@@ -46,6 +47,7 @@ async function register(input){
 // }
 
 async function login(input){
+    
     const {email, password} = input
     
     const userFound = await User.findOne({email: email.toLowerCase()})
@@ -55,6 +57,7 @@ async function login(input){
     // console.log(userFound);
 
     console.log(createToken(userFound, process.env.SECRET_KEY, "24h"));
+   
    
 }
 
