@@ -6,6 +6,10 @@ const httpLink = createUploadLink({
   uri: "http//localhost:3001",
 });
 
+const authLink = setContext((_, { headers }) => {
+  const token = getToken();
+});
+
 const client = new ApolloClient({
   connectToDevTools: true,
   cache: new InMemoryCache(),
