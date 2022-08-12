@@ -1,9 +1,9 @@
 {
-  "name": "instaclone",
+  "name": "DevAsk",
   "version": "1.0.0",
-  "description": "server de la app instaclone",
+  "description": "Server",
   "main": "index.js",
-  "author": "zhune",
+  "author": "Team 3",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon ./index.js"
