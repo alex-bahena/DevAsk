@@ -56,7 +56,7 @@ async function login(input) {
   console.log(createToken(userFound, process.env.SECRET_KEY, "24h"));
 }
 
-async function updateAvatar(file) {
+async function updateAvatar(file, ctx) {
   const { createReadStream, mimetype } = await file;
   const extension = mimetype.split("/")[1];
   //avatar = s3 folder - avtr nombre and extension to add jpeg / jpg etc...
