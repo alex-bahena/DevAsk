@@ -13,6 +13,16 @@ const s3 = new AWS.S3({
   secretAccessKey: SECRET,
 });
 
-async function awsUpload(file, filePath) {}
+async function awsUpload(file, filePath) {
+  const params = { Bucket: BUCKET_NAME, Key: `${filePath}`, Body: file };
+  try {
+    const reponse = await s3.upload(params).promise();
+    //reponse.Location returns the URL from the upload file.
+    return reponse.Location;
+  } catch (error) {
+    console.log(error);
+    throw new Error();
+  }
+}
 
 module.exports = awsUpload;
