@@ -1,12 +1,13 @@
 {
-  "name": "instaclone",
+  "name": "devask",
   "version": "1.0.0",
-  "description": "server de la app instaclone",
+  "description": "devask app server",
   "main": "index.js",
   "author": "zhune",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon ./index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "apollo-server": "^3.10.0",
