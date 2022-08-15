@@ -41,10 +41,13 @@ async function register(input) {
     }
 }
 
-// function getUser(){
-//     console.log("obteniendo usuairo");
-//     return null
-// }
+async function getUser(id, username) {
+    let user = null;
+    if (id) user = await User.findById(id);
+    if (username) user = await User.findOne({ username });
+    if (!user) throw new Error("User doesn't exist");
+    return user;
+}
 
 async function login(input) {
 
@@ -62,6 +65,6 @@ async function login(input) {
 
 module.exports = {
     register,
-    // getUser,
-    login
+    getUser,
+    login,
 }

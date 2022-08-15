@@ -1,11 +1,14 @@
-const { UserInputError } = require("apollo-server-express");
+// const { UserInputError } = require("apollo-server-express");
 const userController = require("../controllers/user");
-const user = require("../models/user");
+// const user = require("../models/user");
 
 const resolvers = {
     Query: {
-        getUser: () => {
-            userController.getUser()
+        // getUser: () => {
+        //     userController.getUser()
+        // }
+        getUser: (_, { id, username }) => {
+            return userController.getUser(id, username);
         }
     },
 

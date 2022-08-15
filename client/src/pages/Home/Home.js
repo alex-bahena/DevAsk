@@ -7,11 +7,10 @@ function Home() {
 
   return (
     <div>
-      <h2>MENU</h2>
       <h1>
-        Home
+        HOME
       </h1>
-    </div>
+    </div >
   );
 }
 

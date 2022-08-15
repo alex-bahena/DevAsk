@@ -1,7 +1,7 @@
 // import React, { useState } from "react";
 import { Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../../hooks/useAuth"
 import ImageNotFound from "../../../assets/avatar.png";
 import { HomeIcon } from '@heroicons/react/solid'
 import { PlusIcon } from '@heroicons/react/solid'
