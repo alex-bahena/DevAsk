@@ -13,16 +13,17 @@
 //   );
 // }
 
-import React from 'react';
-import { Container } from 'semantic-ui-react';
-import { Outlet } from 'react-router-dom';
+import React from "react";
+import { Container } from "semantic-ui-react";
+import Header from "../components/Header";
 
-export default function LayoutBasic() {
+export default function LayoutBasic(props) {
+  const { children } = props;
+
   return (
-    <div>
-      <h1>Menu layout..</h1>
-      <Outlet />
-
-    </div>
-  )
-} 
+    <>
+      <Header />
+      <Container className="layout-basic">{children}</Container>
+    </>
+  );
+}
