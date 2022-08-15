@@ -1,5 +1,5 @@
 // const mongoose = require("mongoose");
-const { ApolloServer } = require("apollo-server-express");
+const { ApolloServer, gql } = require("apollo-server-express");
 const express = require("express");
 const app = express();
 const typeDefs = require("./gql/schema");
@@ -15,15 +15,16 @@ app.use(express.json());
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  csrfPrevention: true,
-  cache: "bounded",
+  // csrfPrevention: true,
+  // cache: "bounded",
   context: ({ req }) => {
     const token = req.headers.authorization;
 
     if (token) {
+      console.log(token);
       try {
         const user = jwt.verify(
-          token.replace("Bearer", ""),
+          token.replace("Bearer ", "" || "Token ", ""),
           process.env.SECRET_KEY
         );
         return {
@@ -32,7 +33,7 @@ const server = new ApolloServer({
       } catch (error) {
         console.log("#### ERROR ####");
         console.log(error);
-        throw new Error("Token invalido");
+        throw new Error("Invalid Token");
       }
     }
   },

@@ -1,5 +1,6 @@
 const { UserInputError } = require("apollo-server-express");
-const userController = require("../controllers/user")
+const userController = require("../controllers/user");
+const user = require("../models/user");
 
 const resolvers = {
     Query: {
@@ -12,7 +13,8 @@ const resolvers = {
         register: (_, { input }) => {
             userController.register(input)
         },
-        login: (_, { input }) => { userController.login(input) }
+        // 
+        login: (_, { input }) => { return userController.login(input) }
     }
 }
 

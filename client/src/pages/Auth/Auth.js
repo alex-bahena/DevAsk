@@ -4,8 +4,6 @@ import { Container } from "semantic-ui-react";
 import RegisterForm from "../../components/Auth/RegisterForm";
 import LoginForm from "../../components/Auth/LoginForm";
 
-
-
 function Auth() {
   const [showLogin, setShowLogin] = useState(true);
   return (

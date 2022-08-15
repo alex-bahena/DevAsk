@@ -29,7 +29,10 @@ export default function LoginForm() {
             input: formData,
           },
         });
-        const { token } = data.login;
+        console.log(data);
+        const { token } = data.login || {};
+        console.log(token);
+
         setToken(token);
         setUser(decodeToken(token));
       } catch (error) {

@@ -7,11 +7,10 @@ export const REGISTER = gql`
       name
       username
       email
-      createAt
+      createdAt
     }
   }
 `;
-
 
 export const LOGIN = gql`
   mutation login($input: LoginInput) {
