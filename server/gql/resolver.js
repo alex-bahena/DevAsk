@@ -1,8 +1,10 @@
 // const { UserInputError } = require("apollo-server-express");
 const userController = require("../controllers/user");
+const { GraphQLUpload } = require("graphql-upload")
 // const user = require("../models/user");
 
 const resolvers = {
+    Upload: GraphQLUpload,
     Query: {
         getUser: (_, { id, username }) => { return userController.getUser(id, username) }
     },
