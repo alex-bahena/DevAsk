@@ -9,12 +9,19 @@ const httpLink = createUploadLink({
 
 const authLink = setContext((_, { headers }) => {
   const token = getToken();
+  return {
+    headers: {
+      //adding headers data.
+      ...headers,
+      Authorization: token ? `Bearer ${token}` : "",
+    },
+  };
 });
 
 const client = new ApolloClient({
   connectToDevTools: true,
   cache: new InMemoryCache(),
-  link: httpLink,
+  link: authLink.concat(httpLink),
 });
 
 export default client;
