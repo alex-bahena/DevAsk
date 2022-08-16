@@ -50,6 +50,7 @@ scalar Upload
     type Query{
     # user
     getUser(id: ID, username: String): User
+    search(search: String): [User]
     }
 
     type Mutation {

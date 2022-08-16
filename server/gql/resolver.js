@@ -6,7 +6,8 @@ const { GraphQLUpload } = require("graphql-upload")
 const resolvers = {
     Upload: GraphQLUpload,
     Query: {
-        getUser: (_, { id, username }) => { return userController.getUser(id, username) }
+        getUser: (_, { id, username }) => { return userController.getUser(id, username) },
+        search: (_, { search }) => userController.search(search),
     },
 
     Mutation: {

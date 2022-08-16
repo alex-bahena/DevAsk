@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { TerminalIcon } from '@heroicons/react/solid'
 import "./Header.scss";
 import RightHeader from "./RightHeader";
+import Search from "./Search";
 
 export default function Header() {
   return (
@@ -17,7 +18,7 @@ export default function Header() {
             <p className="devask-name">devask</p>
           </Grid.Column>
           <Grid.Column width={10}>
-            <p>Search Bar</p>
+            <Search />
           </Grid.Column>
           <Grid.Column width={3}>
             <RightHeader />

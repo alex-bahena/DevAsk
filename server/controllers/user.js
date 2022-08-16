@@ -110,6 +110,14 @@ async function updateUser(input, ctx) {
     }
 }
 
+async function search(search) {
+    const users = await User.find({
+        name: { $regex: search, $options: "i" },
+    });
+
+    return users;
+}
+
 async function login(input) {
 
     const { email, password } = input
@@ -130,5 +138,6 @@ module.exports = {
     login,
     updateAvatar,
     deleteAvatar,
-    updateUser
+    updateUser,
+    search
 }

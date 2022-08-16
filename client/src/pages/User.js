@@ -6,7 +6,6 @@ export default function User() {
   return (
     <>
       <Profile username={username} />
-      <h1>User</h1>
     </>
   );
 }
