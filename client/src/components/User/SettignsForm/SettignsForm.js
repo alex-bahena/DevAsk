@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useApolloClient } from "@apollo/client";
 import useAuth from "../../../hooks/useAuth";
 import PasswordForm from "../PasswordForm";
+import DescriptionForm from "../DescriptionForm";
 import EmailForm from "../EmailForm";
 
 export default function SettignsForm(props) {
@@ -28,6 +29,17 @@ export default function SettignsForm(props) {
     );
   };
 
+  const onChangeDescription = () => {
+    setTitleModal("Update your Bio");
+    setChildrenModal(
+      <DescriptionForm
+        setShowModal={setShowModal}
+        currentDescription={getUser.description}
+        refetch={refetch}
+      />
+    );
+  };
+
   const onLogout = () => {
     client.clearStore();
     logout();
@@ -38,7 +50,7 @@ export default function SettignsForm(props) {
     <div className="settigns-form">
       <Button onClick={onChangePassoword}>Update Password</Button>
       <Button onClick={onChangeEmail}>Update Email</Button>
-      <Button>Update Description</Button>
+      <Button onClick={onChangeDescription}>Update Description</Button>
       <Button>Update Website</Button>
       <Button onClick={onLogout}>Logout</Button>
       <Button onClick={() => setShowModal(false)}>Cancel</Button>
