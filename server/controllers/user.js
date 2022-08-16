@@ -49,6 +49,11 @@ async function getUser(id, username) {
     return user;
 }
 
+async function updateAvatar(file) {
+    console.log(file);
+    return null
+}
+
 async function login(input) {
 
     const { email, password } = input
@@ -67,4 +72,5 @@ module.exports = {
     register,
     getUser,
     login,
+    updateAvatar,
 }

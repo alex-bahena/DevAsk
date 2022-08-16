@@ -4,20 +4,13 @@ const userController = require("../controllers/user");
 
 const resolvers = {
     Query: {
-        // getUser: () => {
-        //     userController.getUser()
-        // }
-        getUser: (_, { id, username }) => {
-            return userController.getUser(id, username);
-        }
+        getUser: (_, { id, username }) => { return userController.getUser(id, username) }
     },
 
     Mutation: {
-        register: (_, { input }) => {
-            userController.register(input)
-        },
-        // 
-        login: (_, { input }) => { return userController.login(input) }
+        register: (_, { input }) => { userController.register(input) },
+        login: (_, { input }) => { return userController.login(input) },
+        updateAvatar: (_, { file }, ctx) => userController.updateAvatar(file, ctx),
     }
 }
 
