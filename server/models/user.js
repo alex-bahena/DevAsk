@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
-const UserSchema = Schema({
+const UserSchema = Schema ({
     name: {
         type: String,
         require: true
@@ -22,20 +22,20 @@ const UserSchema = Schema({
         type: String,
         trim: true
     },
-    siteWeb: {
+    siteWeb:{
         type: String,
         trim: true
     },
-    description: {
+    description:{
         type: String,
         trim: true
     },
-    password: {
+    password:{
         type: String,
         require: true,
         trim: true,
     },
-    createdAt: {
+    createdAt:{
         type: Date,
         default: Date.now()
     }
