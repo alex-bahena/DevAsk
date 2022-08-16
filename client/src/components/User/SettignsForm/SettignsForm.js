@@ -5,6 +5,7 @@ import { useApolloClient } from "@apollo/client";
 import useAuth from "../../../hooks/useAuth";
 import PasswordForm from "../PasswordForm";
 import DescriptionForm from "../DescriptionForm";
+import SiteWebForm from "../SiteWebForm";
 import EmailForm from "../EmailForm";
 
 export default function SettignsForm(props) {
@@ -40,6 +41,17 @@ export default function SettignsForm(props) {
     );
   };
 
+  const onChangeSiteWeb = () => {
+    setTitleModal("Update Website");
+    setChildrenModal(
+      <SiteWebForm
+        setShowModal={setShowModal}
+        currentSiteWeb={getUser.siteWeb}
+        refetch={refetch}
+      />
+    );
+  };
+
   const onLogout = () => {
     client.clearStore();
     logout();
@@ -51,7 +63,7 @@ export default function SettignsForm(props) {
       <Button onClick={onChangePassoword}>Update Password</Button>
       <Button onClick={onChangeEmail}>Update Email</Button>
       <Button onClick={onChangeDescription}>Update Description</Button>
-      <Button>Update Website</Button>
+      <Button onClick={onChangeSiteWeb}>Update Website</Button>
       <Button onClick={onLogout}>Logout</Button>
       <Button onClick={() => setShowModal(false)}>Cancel</Button>
     </div>
