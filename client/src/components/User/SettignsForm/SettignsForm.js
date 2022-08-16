@@ -4,9 +4,10 @@ import { useHistory } from "react-router-dom";
 import { useApolloClient } from "@apollo/client";
 import useAuth from "../../../hooks/useAuth";
 import PasswordForm from "../PasswordForm";
+import EmailForm from "../EmailForm";
 
 export default function SettignsForm(props) {
-  const { setShowModal, setTitleModal, setChildrenModal } = props;
+  const { setShowModal, setTitleModal, setChildrenModal, getUser, refetch } = props;
   const history = useHistory();
   const client = useApolloClient();
   const { logout } = useAuth();
@@ -14,6 +15,17 @@ export default function SettignsForm(props) {
   const onChangePassoword = () => {
     setTitleModal("Change Password");
     setChildrenModal(<PasswordForm logout={onLogout} />);
+  };
+
+  const onChangeEmail = () => {
+    setTitleModal("Change Email");
+    setChildrenModal(
+      <EmailForm
+        setShowModal={setShowModal}
+        currentEmail={getUser.email}
+        refetch={refetch}
+      />
+    );
   };
 
   const onLogout = () => {
@@ -25,7 +37,7 @@ export default function SettignsForm(props) {
   return (
     <div className="settigns-form">
       <Button onClick={onChangePassoword}>Update Password</Button>
-      <Button>Update Email</Button>
+      <Button onClick={onChangeEmail}>Update Email</Button>
       <Button>Update Description</Button>
       <Button>Update Website</Button>
       <Button onClick={onLogout}>Logout</Button>

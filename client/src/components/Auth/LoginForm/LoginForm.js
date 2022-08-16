@@ -29,9 +29,9 @@ export default function LoginForm() {
             input: formData,
           },
         });
-        console.log(data);
+        // console.log(data);
         const { token } = data.login || {};
-        console.log(token);
+        // console.log(token);
 
         setToken(token);
         setUser(decodeToken(token));
