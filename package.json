@@ -1,0 +1,27 @@
+{
+  "name": "devask",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "src" : "",
+    "server": "",
+    "start_full_app": "",
+    "develop": "concurrently \"cd server && yarn dev\" \"cd client && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlejandroBahSan/DevAsk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlejandroBahSan/DevAsk/issues"
+  },
+  "homepage": "https://github.com/AlejandroBahSan/DevAsk#readme",
+  "dependencies": {
+    "concurrently": "^7.3.0"
+  }
+}
