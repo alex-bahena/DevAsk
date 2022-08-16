@@ -60,6 +60,14 @@ scalar Upload
     updateAvatar(file: Upload!): UpdateAvatar
     deleteAvatar: Boolean
     updateUser(input: UserUpdateInput): Boolean
+
+    #Follow
+    follow(username: String!): Boolean
+
+
+
     }
+
+    
 `;
 module.exports = typeDefs

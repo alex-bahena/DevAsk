@@ -1,6 +1,7 @@
 // const { UserInputError } = require("apollo-server-express");
 const userController = require("../controllers/user");
 const { GraphQLUpload } = require("graphql-upload")
+const followController = require("../controllers/follow");
 // const user = require("../models/user");
 
 const resolvers = {
@@ -16,6 +17,9 @@ const resolvers = {
         updateAvatar: (_, { file }, ctx) => userController.updateAvatar(file, ctx),
         deleteAvatar: (_, { }, ctx) => userController.deleteAvatar(ctx),
         updateUser: (_, { input }, ctx) => userController.updateUser(input, ctx),
+
+        //Follow
+        follow: (_, { username }, ctx) => followController.follow(username, ctx),
     }
 }
 
