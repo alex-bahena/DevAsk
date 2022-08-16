@@ -9,6 +9,7 @@ import ModalBasic from "../../Modal/ModalBasic";
 import AvatarForm from "../AvatarForm";
 import HeaderProfile from "./HeaderProfile";
 import userAuth from "../../../hooks/useAuth";
+import SettignsForm from "../SettignsForm";
 
 
 export default function Profile(props) {
@@ -37,9 +38,7 @@ export default function Profile(props) {
       case "settings":
         setTitleModal("");
         setChildrenModal(
-          <div>
-            <h2>Profile Settings</h2>
-          </div>
+          <SettignsForm setShowModal={setShowModal} />
         );
         setShowModal(true);
         break;
