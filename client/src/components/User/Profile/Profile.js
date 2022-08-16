@@ -7,6 +7,7 @@ import ImageNotFound from "../../../assets/avatar.png";
 import UserNotFound from "../../UserNotFound"
 import ModalBasic from "../../Modal/ModalBasic";
 import AvatarForm from "../AvatarForm";
+import HeaderProfile from "./HeaderProfile";
 import userAuth from "../../../hooks/useAuth";
 
 
@@ -33,6 +34,15 @@ export default function Profile(props) {
         );
         setShowModal(true);
         break;
+      case "settings":
+        setTitleModal("");
+        setChildrenModal(
+          <div>
+            <h2>Profile Settings</h2>
+          </div>
+        );
+        setShowModal(true);
+        break;
       default:
         break;
     }
@@ -49,7 +59,10 @@ export default function Profile(props) {
           />
         </Grid.Column>
         <Grid.Column width={11} className="profile__right">
-          <div>HeaderProfile</div>
+          <HeaderProfile
+            getUser={getUser}
+            auth={auth}
+            handlerModal={handlerModal} />
           <div>Followers</div>
           <div className="other">
             <p className="name">{getUser.name}</p>

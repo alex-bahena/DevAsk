@@ -14,6 +14,7 @@ export default function Header() {
             <Link to="/">
               <TerminalIcon className="devask" />
             </Link>
+            <p className="devask-name">devask</p>
           </Grid.Column>
           <Grid.Column width={10}>
             <p>Search Bar</p>

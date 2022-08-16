@@ -72,6 +72,17 @@ async function updateAvatar(file, ctx) {
     }
 }
 
+async function deleteAvatar(ctx) {
+    const { id } = ctx.user;
+    try {
+        await User.findByIdAndUpdate(id, { avatar: "" });
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+
 async function login(input) {
 
     const { email, password } = input
@@ -91,4 +102,5 @@ module.exports = {
     getUser,
     login,
     updateAvatar,
+    deleteAvatar
 }

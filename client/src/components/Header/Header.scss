@@ -12,19 +12,28 @@
   
 
   z-index: 1;
-  // &__logo {
-  //   display: flex !important;
-  //   align-items: center;
+  &__logo {
+    display: flex !important;
+    align-items: center;
 
   //   img {
   //     height: 24px;
   //   }
   // }
+  }
 }
 
 .devask {
   display: flex;
+  flex-direction: row;
   color: white;
   height: 24px;
   width: 24px;
+}
+
+.devask-name {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  color: white;
 }
