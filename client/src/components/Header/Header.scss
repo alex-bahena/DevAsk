@@ -1,0 +1,30 @@
+@import "../../scss/index.scss";
+
+.header {
+  position: relative;
+  // border-bottom: 1px solid #dbdbdb;
+  padding: 12px 0;
+  // background-color: $background-light;
+  background: #00c6ff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  
+
+  z-index: 1;
+  // &__logo {
+  //   display: flex !important;
+  //   align-items: center;
+
+  //   img {
+  //     height: 24px;
+  //   }
+  // }
+}
+
+.devask {
+  display: flex;
+  color: white;
+  height: 24px;
+  width: 24px;
+}

@@ -1,21 +1,60 @@
-// import logo from './logo.svg';
-// import './App.css';
-import React from "react";
-import { Button } from "semantic-ui-react"
-import { ApolloProvider} from "@apollo/client"
-import client from "./config/apollo"
+import React, { useState, useEffect, useMemo } from "react";
+import { ApolloProvider } from "@apollo/client";
+import { ToastContainer } from "react-toastify";
+import client from "./config/apollo";
+import Auth from "./pages/Auth";
+import { getToken, decodeToken, removeToken } from "./utils/token";
+import AuthContext from "./context/AuthContext";
+import Navigation from "./routes/Navigation";
 
 export default function App() {
-  return (
-    <ApolloProvider client={client} >
-    <div className="app">
-      <h1>estamos en app</h1>
-      <Button primary>Primary</Button>
-      <Button secondary>Secondary</Button>
-    </div>
+  const [auth, setAuth] = useState(undefined);
 
+  useEffect(() => {
+    const token = getToken();
+    if (!token) {
+      setAuth(null);
+    } else {
+      setAuth(decodeToken(token));
+    }
+  }, []);
+
+  const logout = () => {
+    removeToken();
+    setAuth(null);
+  };
+
+  const setUser = (user) => {
+    setAuth(user);
+  };
+
+  const authData = useMemo(
+    () => ({
+      auth,
+      logout,
+      setUser,
+    }),
+    [auth]
+  );
+
+  if (auth === undefined) return null;
+
+  return (
+    <ApolloProvider client={client}>
+      <AuthContext.Provider value={authData}>
+        {!auth ? <Auth /> : <Navigation />}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </AuthContext.Provider>
     </ApolloProvider>
   );
 }
-
-
