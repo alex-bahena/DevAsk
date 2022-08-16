@@ -17,8 +17,9 @@
   .ui.image.avatar {
     width: 25px;
     height: 25px;
-    // border: 1px solid $border-dark;
-    // padding: 2px;
+    border: 2px solid rgb(250, 111, 134);
+    padding: 1px;
+    object-fit: cover;
   }
 
   i.icon,
