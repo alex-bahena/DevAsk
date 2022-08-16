@@ -1,7 +1,17 @@
+<<<<<<< HEAD
 const User = require("../models/user");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const awsUpload = require("../utils/aws-upload");
+=======
+const User = require("../models/user")
+const bcryptjs = require("bcryptjs")
+const jwt = require("jsonwebtoken")
+const awsUpload = require("../utils/aws.upload");
+
+
+require("dotenv").config({ path: __dirname + '/../../.env' });
+>>>>>>> 6e0f123774213bcff1d53afc2f2cf644b80776b6
 
 require("dotenv").config({ path: __dirname + "/../../.env" });
 
@@ -39,10 +49,80 @@ async function register(input) {
   }
 }
 
+<<<<<<< HEAD
 // function getUser(){
 //     console.log("obteniendo usuairo");
 //     return null
 // }
+=======
+async function updateAvatar(file, ctx) {
+    const { id } = ctx.user;
+    const { createReadStream, mimetype } = await file;
+    const extension = mimetype.split("/")[1];
+    const imageName = `avatar/${id}.${extension}`;
+    const fileData = createReadStream();
+
+    try {
+        const result = await awsUpload(fileData, imageName);
+        await User.findByIdAndUpdate(id, { avatar: result });
+        return {
+            status: true,
+            urlAvatar: result,
+        };
+    } catch (error) {
+        return {
+            status: false,
+            urlAvatar: null,
+        };
+    }
+}
+
+async function deleteAvatar(ctx) {
+    const { id } = ctx.user;
+    try {
+        await User.findByIdAndUpdate(id, { avatar: "" });
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+
+async function updateUser(input, ctx) {
+    const { id } = ctx.user;
+
+    try {
+        if (input.currentPassword && input.newPassword) {
+            const userFound = await User.findById(id);
+            const passwordSuccess = await bcryptjs.compare(
+                input.currentPassword,
+                userFound.password
+            );
+
+            if (!passwordSuccess) throw new Error("Incorrect Password");
+
+            const salt = await bcryptjs.genSaltSync(10);
+            const newPasswordCrypt = await bcryptjs.hash(input.newPassword, salt);
+
+            await User.findByIdAndUpdate(id, { password: newPasswordCrypt });
+        } else {
+            await User.findByIdAndUpdate(id, input);
+        }
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+
+async function search(search) {
+    const users = await User.find({
+        name: { $regex: search, $options: "i" },
+    });
+
+    return users;
+}
+>>>>>>> 6e0f123774213bcff1d53afc2f2cf644b80776b6
 
 async function login(input) {
   const { email, password } = input;
@@ -80,8 +160,19 @@ async function updateAvatar(file, ctx) {
 }
 
 module.exports = {
+<<<<<<< HEAD
   register,
   // getUser,
   login,
   updateAvatar,
 };
+=======
+    register,
+    getUser,
+    login,
+    updateAvatar,
+    deleteAvatar,
+    updateUser,
+    search
+}
+>>>>>>> 6e0f123774213bcff1d53afc2f2cf644b80776b6

@@ -2,12 +2,13 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  //   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  //   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: $background-grey-light;
+  font-family: 'Roboto', sans-serif;
 }
 
 code {
@@ -15,8 +16,13 @@ code {
     monospace;
 }
 
+<<<<<<< HEAD
 .btn{
   .active{
     
   }
+=======
+.siteWeb {
+  font-weight: bolder;
+>>>>>>> 6e0f123774213bcff1d53afc2f2cf644b80776b6
 }
