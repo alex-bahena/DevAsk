@@ -57,13 +57,20 @@ async function login(input) {
 }
 
 async function updateAvatar(file, ctx) {
+  const { id } = ctx.user;
   const { createReadStream, mimetype } = await file;
   const extension = mimetype.split("/")[1];
   //avatar = s3 folder - avtr nombre and extension to add jpeg / jpg etc...
-  const imagePath = `avatar/avtr.${extension}`;
+  // id = This id will be used to upload images to S3 with the name avatar+id of each user + extension.
+  const imagePath = `avatar/${id}.${extension}`;
   const fileData = createReadStream();
   try {
     const result = await awsUpload(fileData, imagePath);
+    // returns the image by an url, to use it as a profile photo.
+    return {
+      status: true,
+      urlAvatar: result,
+    };
   } catch (error) {
     return {
       status: false,
