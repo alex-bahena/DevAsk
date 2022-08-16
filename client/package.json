@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "DevAsk",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,10 +8,12 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
-    "formik": "^2.2.9",
+    "apollo-link-context": "^1.0.20",
+    "apollo-upload-client": "^17.0.0",
     "graphql": "^16.5.0",
+    "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
-    "lodash": "^4.17.21",
+    "node-sass": "^7.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.2",

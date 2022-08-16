@@ -1,4 +1,5 @@
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
+
 const { ApolloServer, gql } = require("apollo-server-express");
 const express = require("express");
 const app = express();
@@ -8,35 +9,14 @@ const db = require("./config/connection");
 require("dotenv").config({ path: ".env" });
 const PORT = process.env.PORT || 3001;
 
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  // csrfPrevention: true,
-  // cache: "bounded",
-  context: ({ req }) => {
-    const token = req.headers.authorization;
-
-    if (token) {
-      console.log(token);
-      try {
-        const user = jwt.verify(
-          token.replace("Bearer ", "" || "Token ", ""),
-          process.env.SECRET_KEY
-        );
-        return {
-          user,
-        };
-      } catch (error) {
-        console.log("#### ERROR ####");
-        console.log(error);
-        throw new Error("Invalid Token");
-      }
-    }
-  },
+  csrfPrevention: true,
+  cache: "bounded",
 });
 
 const startApolloServer = async (typeDefs, resolvers) => {
@@ -53,4 +33,3 @@ const startApolloServer = async (typeDefs, resolvers) => {
 };
 
 startApolloServer(typeDefs, resolvers);
-
