@@ -38,7 +38,11 @@ export default function Profile(props) {
       case "settings":
         setTitleModal("");
         setChildrenModal(
-          <SettignsForm setShowModal={setShowModal} />
+          <SettignsForm
+            setShowModal={setShowModal}
+            setTitleModal={setTitleModal}
+            setChildrenModal={setChildrenModal}
+          />
         );
         setShowModal(true);
         break;

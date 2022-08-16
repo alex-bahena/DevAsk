@@ -83,6 +83,33 @@ async function deleteAvatar(ctx) {
     }
 }
 
+async function updateUser(input, ctx) {
+    const { id } = ctx.user;
+
+    try {
+        if (input.currentPassword && input.newPassword) {
+            const userFound = await User.findById(id);
+            const passwordSuccess = await bcryptjs.compare(
+                input.currentPassword,
+                userFound.password
+            );
+
+            if (!passwordSuccess) throw new Error("Incorrect Password");
+
+            const salt = await bcryptjs.genSaltSync(10);
+            const newPasswordCrypt = await bcryptjs.hash(input.newPassword, salt);
+
+            await User.findByIdAndUpdate(id, { password: newPasswordCrypt });
+        } else {
+            await User.findByIdAndUpdate(id, input);
+        }
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+
 async function login(input) {
 
     const { email, password } = input
@@ -102,5 +129,6 @@ module.exports = {
     getUser,
     login,
     updateAvatar,
-    deleteAvatar
+    deleteAvatar,
+    updateUser
 }

@@ -38,6 +38,15 @@ scalar Upload
         password: String!
     }
 
+    input UserUpdateInput {
+    name: String
+    email: String
+    currentPassword: String
+    newPassword: String
+    siteWeb: String
+    description: String
+  }
+
     type Query{
     # user
     getUser(id: ID, username: String): User
@@ -49,6 +58,7 @@ scalar Upload
     login(input: LoginInput): Token
     updateAvatar(file: Upload!): UpdateAvatar
     deleteAvatar: Boolean
+    updateUser(input: UserUpdateInput): Boolean
     }
 `;
 module.exports = typeDefs
