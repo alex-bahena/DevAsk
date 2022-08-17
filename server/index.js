@@ -3,13 +3,12 @@ const { ApolloServer, gql } = require("apollo-server-express");
 const express = require("express");
 const app = express();
 const typeDefs = require("./gql/schema");
-const { graphqlUploadExpress } = require("graphql-upload")
-const jwt = require("jsonwebtoken")
+const { graphqlUploadExpress } = require("graphql-upload");
+const jwt = require("jsonwebtoken");
 const resolvers = require("./gql/resolver");
 const db = require("./config/connection");
 require("dotenv").config({ path: ".env" });
 const PORT = process.env.PORT || 3001;
-
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -20,7 +19,7 @@ const server = new ApolloServer({
   // csrfPrevention: true,
   // cache: "bounded",
   context: ({ req }) => {
-    const token = req.headers.authorization.split(' ')[1];
+    const token = req.headers.authorization.split(" ")[1];
 
     if (token) {
       console.log(token);
@@ -33,7 +32,7 @@ const server = new ApolloServer({
           user,
         };
       } catch (error) {
-        console.log("#### ERROR ####");
+        console.log("=== ERROR ===");
         console.log(error);
         throw new Error("Invalid Token");
       }
@@ -57,4 +56,3 @@ const startApolloServer = async (typeDefs, resolvers) => {
 };
 
 startApolloServer(typeDefs, resolvers);
-
