@@ -9,6 +9,8 @@ const resolvers = {
     Query: {
         getUser: (_, { id, username }) => { return userController.getUser(id, username) },
         search: (_, { search }) => userController.search(search),
+        //FOLLOW
+        isFollow: (_, { username }, ctx) => followController.isFollow(username, ctx),
     },
 
     Mutation: {

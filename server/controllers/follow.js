@@ -18,6 +18,15 @@ async function follow(username, ctx) {
   }
 }
 
+async function isFollow(username, ctx){
+  const userFound = await User.findOne({ username });
+  if (!userFound) throw new Error ("Error no encontrado");
+
+  const follow = await Follow.find({ idUser: ctx.user.id })
+  .where("follow")
+  .equals(userFound._id);
+}
+
 module.exports = {
   follow,
 };
