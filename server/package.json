@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "devask app server",
   "main": "index.js",
-  "author": "zhune",
+  "author": "team-03",
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
