@@ -7,7 +7,7 @@ export const REGISTER = gql`
       name
       username
       email
-      createAt
+      createdAt
     }
   }
 `;
@@ -18,9 +18,6 @@ export const LOGIN = gql`
       token
     }
   }
-<<<<<<< HEAD
-`;
-=======
 `;
 
 export const GET_USER = gql`
@@ -67,4 +64,3 @@ export const SEARCH = gql`
     }
   }
 `;
->>>>>>> 6e0f123774213bcff1d53afc2f2cf644b80776b6

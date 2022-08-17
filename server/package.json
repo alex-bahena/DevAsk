@@ -1,12 +1,13 @@
 {
-  "name": "DevAsk",
+  "name": "devask",
   "version": "1.0.0",
-  "description": "Server",
+  "description": "devask app server",
   "main": "index.js",
-  "author": "Team 3",
+  "author": "zhune",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon ./index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "apollo-server": "^3.10.0",
@@ -18,7 +19,6 @@
     "graphql": "^16.5.0",
     "graphql-upload": "^13.0.0",
     "jsonwebtoken": "^8.5.1",
-    "jwt-decode": "^3.1.2",
     "mongodb": "^4.8.1",
     "mongoose": "^6.5.1",
     "path": "^0.12.7"

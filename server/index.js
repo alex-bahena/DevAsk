@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
+// const mongoose = require("mongoose");
 const { ApolloServer, gql } = require("apollo-server-express");
 const express = require("express");
 const app = express();
@@ -8,7 +7,9 @@ const { graphqlUploadExpress } = require("graphql-upload")
 const jwt = require("jsonwebtoken")
 const resolvers = require("./gql/resolver");
 const db = require("./config/connection");
+require("dotenv").config({ path: ".env" });
 const PORT = process.env.PORT || 3001;
+
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -16,31 +17,28 @@ app.use(express.json());
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  // csrfPrevention: true,
+  // cache: "bounded",
   context: ({ req }) => {
-<<<<<<< HEAD
-    const token = req.headers.authorization;
-=======
     const token = req.headers.authorization.split(' ')[1];
 
->>>>>>> 6e0f123774213bcff1d53afc2f2cf644b80776b6
     if (token) {
+      console.log(token);
       try {
         const user = jwt.verify(
-          token.replace("Bearer " || "Token ", ""),
-          process.env.SECRET_KEY_URI || SECRET_KEY
+          token.replace("Bearer ", "" || "Token ", ""),
+          process.env.SECRET_KEY
         );
         return {
           user,
         };
       } catch (error) {
-        console.log("===ERROR===");
+        console.log("#### ERROR ####");
         console.log(error);
         throw new Error("Invalid Token");
       }
     }
   },
-  csrfPrevention: true,
-  cache: "bounded",
 });
 
 const startApolloServer = async (typeDefs, resolvers) => {
@@ -59,3 +57,4 @@ const startApolloServer = async (typeDefs, resolvers) => {
 };
 
 startApolloServer(typeDefs, resolvers);
+
