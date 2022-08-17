@@ -68,6 +68,7 @@ scalar Upload
 
     #Follow
     follow(username: String!): Boolean
+    unFollow(username: String!): Boolean
 
 
 
