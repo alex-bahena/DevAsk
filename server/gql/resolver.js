@@ -9,8 +9,10 @@ const resolvers = {
     Query: {
         getUser: (_, { id, username }) => { return userController.getUser(id, username) },
         search: (_, { search }) => userController.search(search),
+
         //FOLLOW
-        isFollow: (_, { username }, ctx) => followController.isFollow(username, ctx),
+        isFollow: (_, { username }, ctx) => 
+        followController.isFollow(username, ctx),
     },
 
     Mutation: {
@@ -22,7 +24,9 @@ const resolvers = {
 
         //Follow
         follow: (_, { username }, ctx) => followController.follow(username, ctx),
-    }
+        unFollow: (_, { username }, ctx) =>
+          followController.unFollow(username, ctx),
+    },
 }
 
 module.exports = resolvers
