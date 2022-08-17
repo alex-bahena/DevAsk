@@ -51,7 +51,12 @@ scalar Upload
     # user
     getUser(id: ID, username: String): User
     search(search: String): [User]
+    
+
+    #Follow
+    isFollow(username: String!): Boolean
     }
+
 
     type Mutation {
     #user
