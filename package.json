@@ -4,10 +4,12 @@
   "description": "Developer's social media",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/index.js",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "build": "cd client && npm run build"
+    "client-install": "npm install --prefix client",
+    "start": "node ./server/index.js",
+    "server": "nodemon ./server/index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
