@@ -6,6 +6,7 @@ const typeDefs = require("./gql/schema");
 const { graphqlUploadExpress } = require("graphql-upload");
 const jwt = require("jsonwebtoken");
 const resolvers = require("./gql/resolver");
+const path = require("path");
 const db = require("./config/connection");
 require("dotenv").config({ path: ".env" });
 const PORT = process.env.PORT || 3001;
