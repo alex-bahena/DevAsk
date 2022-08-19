@@ -26,6 +26,11 @@ scalar Upload
     urlAvatar: String
     }
 
+    type Publish {
+        status: Boolean
+        urlFile: String
+    }
+
     input UserInput {
         name: String!
         username: String!
@@ -70,7 +75,8 @@ scalar Upload
     follow(username: String!): Boolean
     unFollow(username: String!): Boolean
 
-
+    #Publication
+    publish(file: Upload): Publish
 
     }
 
