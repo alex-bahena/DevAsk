@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const FollowSchema = Schema({
-  userId: {
+  idUser: {
     type: Schema.Types.ObjectId,
     require: true,
     ref: "User",

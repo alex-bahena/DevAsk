@@ -10,11 +10,12 @@ export default function HeaderProfile(props) {
     variables: { username: getUser.username },
   });
 
- console.log(data);
+
 
  const buttonFollow = () => {
   if(data.isFollow) {
-    return <Button className="btn-danger"> Unfollow</Button>;
+    return  <Button className="btn-danger">Unfollow</Button>;
+       
 } else {
     return <Button className="btn-action">Follow</Button>;
   }
