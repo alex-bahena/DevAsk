@@ -15,7 +15,7 @@ mongoose.connect(
   },
   (err, _) => {
     if (err) {
-      console.log("Error de conexion");
+      console.log("Connection Error");
     } else {
       server();
     }
@@ -39,17 +39,17 @@ function server() {
             user,
           };
         } catch (error) {
-          console.log("#### ERROR ####");
+          console.log("=== ERROR ===");
           console.log(error);
-          throw new Error("Token invalido");
+          throw new Error("Invalid Token");
         }
       }
     },
   });
 
   serverApollo.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
-    console.log("###############################");
-    console.log(`Servidor listo en la url ${url}`);
-    console.log("###############################");
+    console.log("================================");
+    console.log(`Server running on ${url}`);
+    console.log("================================");
   });
 }

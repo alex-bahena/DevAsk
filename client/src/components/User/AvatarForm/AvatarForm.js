@@ -1,10 +1,9 @@
-
 import { Button } from "semantic-ui-react";
 import { useDropzone } from "react-dropzone";
 import React, { useState, useCallback } from "react";
 import { useMutation } from "@apollo/client";
 import { UPDATE_AVATAR, GET_USER, DELETE_AVATAR } from "../../../gql/user";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
 import "./AvatarForm.scss";
 
 export default function AvatarForm(props) {
@@ -87,13 +86,13 @@ export default function AvatarForm(props) {
   };
 
   return (
-
     <div className="avatar-form">
-      <Button {...getRootProps()} loading={loading}>Upload Photo</Button>
+      <Button {...getRootProps()} loading={loading}>
+        Upload Photo
+      </Button>
       <Button onClick={onDeleteAvatar}>Delete Current Photo</Button>
       <Button onClick={() => setShowModal(false)}>Cancel</Button>
       <input {...getInputProps()} />
     </div>
-  )
-
+  );
 }
