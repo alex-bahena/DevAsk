@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Developer's social media",
   "main": "server/index.js",
+  "engines": {
+    "node": "16.17.0"
+  },
   "scripts": {
     "start": "node server/index.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
