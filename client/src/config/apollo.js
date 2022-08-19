@@ -6,7 +6,6 @@ import { getToken } from "../utils/token";
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
-
 const authLink = setContext((_, { headers }) => {
   const token = getToken();
 
