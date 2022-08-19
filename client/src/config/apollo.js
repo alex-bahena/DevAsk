@@ -1,11 +1,12 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { createHttpLink } from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
+import { createUploadLink } from "apollo-upload-client";
+import { setContext } from "apollo-link-context";
 import { getToken } from "../utils/token";
 
-const httpLink = createHttpLink({
-  uri: "/graphql",
+const httpLink = createUploadLink({
+  uri: "https://devask.herokuapp.com/",
 });
+
 const authLink = setContext((_, { headers }) => {
   const token = getToken();
 
