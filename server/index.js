@@ -7,12 +7,16 @@ const { graphqlUploadExpress } = require("graphql-upload");
 const jwt = require("jsonwebtoken");
 const resolvers = require("./gql/resolver");
 const db = require("./config/connection");
-require("dotenv").config({ path: ".env" });
+const path = require("path");
 const PORT = process.env.PORT || 3001;
+require("dotenv").config({ path: ".env" });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
+app.use(express.static("public"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "public", "index.html"));
+});
 const server = new ApolloServer({
   typeDefs,
   resolvers,

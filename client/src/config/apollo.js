@@ -4,7 +4,7 @@ import { setContext } from "apollo-link-context";
 import { getToken } from "../utils/token";
 
 const httpLink = createUploadLink({
-  uri: "https://devask.herokuapp.com/",
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
