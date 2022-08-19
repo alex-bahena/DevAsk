@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "node ./index.js",
-    "dev": "nodemon ./index.js"
+    "watch": "nodemon server.js"
   },
   "dependencies": {
     "apollo-server": "^3.10.0",
