@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "team-03",
   "license": "MIT",
+  
+  "engines": {
+    "node": "16.17.0"
+  },
   "scripts": {
     "start": "node ./index.js",
     "dev": "nodemon ./index.js"
