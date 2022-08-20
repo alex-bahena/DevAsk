@@ -7,8 +7,8 @@
     "node": "16.17.0"
   },
   "scripts": {
-    "start": "node server/index.js",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "start:dev": "concurrently \"cd client && npm run build\" \"cd server && npm run server\"",
+    "start": "npm run build && cd server && node server.js",
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build"
   },
