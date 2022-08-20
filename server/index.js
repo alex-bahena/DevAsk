@@ -8,6 +8,7 @@ const jwt = require("jsonwebtoken");
 const resolvers = require("./gql/resolver");
 const db = require("./config/connection");
 const path = require("path");
+const cors = require("cors");
 require("dotenv").config({ path: ".env" });
 const PORT = process.env.PORT || 3001;
 
@@ -17,6 +18,14 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 }
+
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 const server = new ApolloServer({
   typeDefs,
