@@ -1,11 +1,9 @@
-const { gql } = require("apollo-server-express")
-
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-scalar Upload
+  scalar Upload
 
-
-    type User {
+  type User {
     id: ID
     name: String
     username: String
@@ -15,30 +13,30 @@ scalar Upload
     password: String
     avatar: String
     createdAt: String
-    }
+  }
 
-    type Token{
+  type Token {
     token: String
-    }
+  }
 
-    type UpdateAvatar {
+  type UpdateAvatar {
     status: Boolean
     urlAvatar: String
-    }
+  }
 
-    input UserInput {
-        name: String!
-        username: String!
-        email: String!
-        password: String!
-    }
+  input UserInput {
+    name: String!
+    username: String!
+    email: String!
+    password: String!
+  }
 
-    input LoginInput {
-        email: String!
-        password: String!
-    }
+  input LoginInput {
+    email: String!
+    password: String!
+  }
 
-    input UserUpdateInput {
+  input UserUpdateInput {
     name: String
     email: String
     currentPassword: String
@@ -47,13 +45,13 @@ scalar Upload
     description: String
   }
 
-    type Query{
+  type Query {
     # user
     getUser(id: ID, username: String): User
     search(search: String): [User]
-    }
+  }
 
-    type Mutation {
+  type Mutation {
     #user
     register(input: UserInput): User
     login(input: LoginInput): Token
@@ -63,11 +61,6 @@ scalar Upload
 
     #Follow
     follow(username: String!): Boolean
-
-
-
-    }
-
-    
+  }
 `;
-module.exports = typeDefs
+module.exports = typeDefs;
