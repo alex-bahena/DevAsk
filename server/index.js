@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static("../client/build"));
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
