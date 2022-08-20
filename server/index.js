@@ -3,50 +3,37 @@ const { ApolloServer, gql } = require("apollo-server-express");
 const express = require("express");
 const app = express();
 const typeDefs = require("./gql/schema");
-const { graphqlUploadExpress } = require("graphql-upload");
-const jwt = require("jsonwebtoken");
+const { graphqlUploadExpress } = require("graphql-upload")
+const jwt = require("jsonwebtoken")
 const resolvers = require("./gql/resolver");
 const db = require("./config/connection");
-const path = require("path");
-const cors = require("cors");
-const PORT = process.env.PORT || 3001;
 require("dotenv").config({ path: ".env" });
+const PORT = process.env.PORT || 3001;
 
-app.use(express.urlencoded({ extended: true }));
+
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/build")));
-}
-
-const corsOptions = {
-  origin: "*",
-  credentials: true, //access-control-allow-credentials:true
-  optionSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions));
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  csrfPrevention: true,
-  cache: "bounded",
+  // csrfPrevention: true,
+  // cache: "bounded",
   context: ({ req }) => {
-    const token = req.headers.authorization?.split(" ")[1];
+    const token = req.headers.authorization?.split(' ')[1];
 
     if (token) {
       console.log(token);
       try {
         const user = jwt.verify(
-          token.replace("Bearer ", ""),
+          token.replace("Bearer ", "" || "Token ", ""),
           process.env.SECRET_KEY
         );
         return {
           user,
         };
       } catch (error) {
-        console.log("=== ERROR ===");
+        console.log("#### ERROR ####");
         console.log(error);
         throw new Error("Invalid Token");
       }
@@ -70,3 +57,5 @@ const startApolloServer = async (typeDefs, resolvers) => {
 };
 
 startApolloServer(typeDefs, resolvers);
+
+

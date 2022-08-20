@@ -54,7 +54,6 @@ export default function LoginForm() {
       </div>
       <br></br>
       <Form className="login-form" onSubmit={formik.handleSubmit}>
-        <h2>Login to the dev-ask community.</h2>
         <Form.Input
           type="text"
           placeholder="Email"

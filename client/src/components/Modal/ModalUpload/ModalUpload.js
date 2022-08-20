@@ -80,7 +80,7 @@ export default function ModalUpload(props) {
 
       {fileUpload && (
         <Button className="btn-upload btn-action" onClick={onPublish}>
-          Publicar
+          Publish
         </Button>
       )}
 
