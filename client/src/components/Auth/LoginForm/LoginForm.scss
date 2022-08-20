@@ -1,13 +1,15 @@
 @import "../../../scss/index.scss";
 
 
+
 h1 {
   font-size: 30px !important;
-  color: rgb(31, 167, 221);
+  color: rgb(179, 39, 249) !important;
   text-align: center;
 }
 
 .login-form {
+  
  
   h2 {
     font-size: 20px !important;
@@ -17,9 +19,19 @@ h1 {
   input {
     padding: 15px !important;
     background-color: white !important;
-    border-radius: 30px;
+    border-radius: 20px !important;
   }
   .btn-submit {
-    width: 100%
+    width: 100%;
+    padding: 5px 20px !important;
+    border-radius: 10px !important;
+    height: 35px;
+  color: white !important;
+  background-color: rgb(187, 0, 255) !important;
+  &:hover,
+  &:focus {
+    background-color: rgb(232, 171, 255) !important;
   }
-}
+  }
+  }
+

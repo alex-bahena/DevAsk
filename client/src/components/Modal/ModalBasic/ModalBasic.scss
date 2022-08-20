@@ -1,10 +1,36 @@
 @import "../../../scss/index.scss";
 
 .modal-basic {
-  border-radius: 15px !important;
+  border-radius: 20px !important;
   overflow: hidden;
+  background-color: rgb(192, 192, 192) !important;
+
 
   .header {
     text-align: center;
+    background-color: rgb(192, 192, 192) !important;
+    color: white !important;
+    border-bottom: none !important;
+  }
+
+  .password-form {
+    input {
+      border: none !important;
+      border-radius: 10px !important;
+    }
+  }
+
+  
+
+  .btn-submit {
+    padding: 5px 20px !important;
+    border-radius: 10px !important;
+    height: 35px;
+  color: white !important;
+  background-color: rgb(187, 0, 255) !important;
+  &:hover,
+  &:focus {
+    background-color: rgb(232, 171, 255) !important;
+  }
   }
 }

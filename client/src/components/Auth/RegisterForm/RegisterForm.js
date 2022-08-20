@@ -53,7 +53,7 @@ export default function RegisterForm(props) {
   return (
     <>
       <h2 className="register-form-title">
-        Signup to enter the dev-ask community.
+        Join the dev-ask community:
       </h2>
       <Form className="register-form" onSubmit={formik.handleSubmit}>
         <Form.Input

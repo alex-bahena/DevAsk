@@ -8,11 +8,22 @@
 
 .register-form {
   input {
-    padding: 13px 15px !important;
-    background-color: #f9f9f9 !important;
+    padding: 15px !important;
+    background-color: white !important;
+    border-radius: 20px !important;
   }
-}
+  .btn-submit {
+    width: 100%;
+    padding: 5px 20px !important;
+    border-radius: 10px !important;
+    height: 35px;
+  color: white !important;
+  background-color: rgb(187, 0, 255) !important;
+  &:hover,
+  &:focus {
+    background-color: rgb(232, 171, 255) !important;
+  }
+  }
+  }
 
-.btn-submit {
-  background-color: red;
-}
+

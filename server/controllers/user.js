@@ -315,7 +315,7 @@ async function login(input) {
   if (!userFound) throw new Error("Email or Password error!")
   const passwordSuccuess = await bcryptjs.compare(password, userFound.password)
   if (!passwordSuccuess) throw new Error("Email or Password Error!")
-  console.log(createToken(userFound, process.env.SECRET_KEY, "24h"));
+  // console.log(createToken(userFound, process.env.SECRET_KEY, "24h"));
   const token = createToken(userFound, process.env.SECRET_KEY, "400h")
   return { token }
 }
