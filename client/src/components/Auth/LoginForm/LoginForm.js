@@ -46,7 +46,7 @@ export default function LoginForm() {
       <div>
         <h1>
           <p>
-            Welcome to dev-ask!
+            dev-ask!
           </p>
         </h1>
         <p>The number one spot for all developers. Find inspiration, connect with others, share your work
