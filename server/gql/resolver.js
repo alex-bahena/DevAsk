@@ -1,24 +1,38 @@
-// const { AuthenticationError } = require("apollo-server-express");
 const userController = require("../controllers/user");
-const { GraphQLUpload } = require("graphql-upload");
 const followController = require("../controllers/follow");
 const publicationController = require("../controllers/publication");
-// const user = require("../models/user");
+const commentController = require("../controllers/comment");
+const likeController = require("../controllers/like");
 
 const resolvers = {
-  Upload: GraphQLUpload,
   Query: {
-    getUser: (_, { id, username }) => {
-      return userController.getUser(id, username);
-    },
+    // User
+    getUser: (_, { id, username }) => userController.getUser(id, username),
     search: (_, { search }) => userController.search(search),
 
-    //FOLLOW
+    // Follow
     isFollow: (_, { username }, ctx) =>
       followController.isFollow(username, ctx),
     getFollowers: (_, { username }) => followController.getFollowers(username),
-  },
+    getFolloweds: (_, { username }) => followController.getFolloweds(username),
+    getNotFolloweds: (_, {}, ctx) => followController.getNotFolloweds(ctx),
 
+    // Publication
+    getPublications: (_, { username }) =>
+      publicationController.getPublications(username),
+    getPublicationsFolloweds: (_, {}, ctx) =>
+      publicationController.getPublicationsFolloweds(ctx),
+
+    // Comment
+    getComments: (_, { idPublication }) =>
+      commentController.getComments(idPublication),
+
+    // Like
+    isLike: (_, { idPublication }, ctx) =>
+      likeController.isLike(idPublication, ctx),
+    countLikes: (_, { idPublication }) =>
+      likeController.countLikes(idPublication),
+  },
   Mutation: {
     // User
     register: (_, { input }) => userController.register(input),
@@ -34,6 +48,15 @@ const resolvers = {
 
     // Publication
     publish: (_, { file }, ctx) => publicationController.publish(file, ctx),
+
+    // Comment
+    addComment: (_, { input }, ctx) => commentController.addComment(input, ctx),
+
+    // Like
+    addLike: (_, { idPublication }, ctx) =>
+      likeController.addLike(idPublication, ctx),
+    deleteLike: (_, { idPublication }, ctx) =>
+      likeController.deleteLike(idPublication, ctx),
   },
 };
 

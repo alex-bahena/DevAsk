@@ -1,70 +1,95 @@
-import React, { useCallback, useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Modal, Icon, Button, Dimmer, Loader } from "semantic-ui-react";
-import { useDropzone } from "react-dropzone"
-import { useMutation } from "@apollo/client"
-import { PUBLISH } from "../../../gql/publication"
-import "./ModalUpload.scss"
+import { toast } from "react-toastify";
+import { useDropzone } from "react-dropzone";
+import { useMutation } from "@apollo/client";
+import { PUBLISH } from "../../../gql/publication";
+import "./ModalUpload.scss";
 
 export default function ModalUpload(props) {
-    const { show, setShow } = props;
-    const [fileUpload, setFileUpload] = useState(null)
-    const [publish] = useMutation(PUBLISH)
+  const { show, setShow } = props;
+  const [fileUpload, setFileUpload] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [publish] = useMutation(PUBLISH);
 
-    const onDrop = useCallback((acceptedFile) => {
-        const file = acceptedFile[0]
-        setFileUpload({
-            type: "image",
-            file,
-            preview: URL.createObjectURL(file),
-        });
-    })
+  const onDrop = useCallback((acceptedFile) => {
+    const file = acceptedFile[0];
+    setFileUpload({
+      type: "image",
+      file,
+      preview: URL.createObjectURL(file),
+    });
+  });
 
-    const { getRootProps, getInputProps } = useDropzone({
-        accept: "image/jpeg, image/png",
-        noKeyboard: true,
-        multiple: false,
-        onDrop
-    })
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: "image/jpeg, image/png",
+    noKeyboard: true,
+    multiple: false,
+    onDrop,
+  });
 
-    const onClose = () => {
-        setShow(false);
-    };
+  const onClose = () => {
+    setIsLoading(false);
+    setFileUpload(null);
+    setShow(false);
+  };
 
-    const onPublish = async () => {
-        try {
-            const result = await publish({
-                variables: {
-                    file: fileUpload.file,
-                }
-            })
-        } catch (error) {
-            console.log(error)
-        }
+  const onPublish = async () => {
+    try {
+      setIsLoading(true);
+      const result = await publish({
+        variables: {
+          file: fileUpload.file,
+        },
+      });
+      const { data } = result;
+
+      if (!data.publish.status) {
+        toast.warning("Post Error");
+        isLoading(false);
+      } else {
+        onClose();
+      }
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    return (
-        <Modal size="small" open={show} onClose={onClose} className="modal-upload">
-            <div {...getRootProps()} className="dropzone" style={fileUpload && { border: 0 }}>
+  return (
+    <Modal size="small" open={show} onClose={onClose} className="modal-upload">
+      <div
+        {...getRootProps()}
+        className="dropzone"
+        style={fileUpload && { border: 0 }}
+      >
+        {!fileUpload && (
+          <>
+            <Icon name="cloud upload" />
+            <p>Pull your image here</p>
+          </>
+        )}
+        <input {...getInputProps()} />
+      </div>
 
-                {!fileUpload && (
-                    <>
-                        <Icon name="cloud upload" />
-                        <p>arrastra la foto que quieras publicar</p>
-                    </>
-                )}
+      {fileUpload?.type === "image" && (
+        <div
+          className="image"
+          style={{ backgroundImage: `url("${fileUpload.preview}")` }}
+        />
+      )}
 
-                <input {...getInputProps()} />
-            </div>
+      {fileUpload && (
+        <Button className="btn-upload btn-action" onClick={onPublish}>
+          Publicar
+        </Button>
+      )}
 
-            {fileUpload?.type === "image" && (
-                <div className="image" style={{ backgroundImage: `url(${fileUpload.preview})` }} />
-            )}
-
-            {fileUpload && (
-                <Button className="btn-upload btn-action" onClick={onPublish}>
-                    publicar
-                </Button>
-            )}
-        </Modal>
-    );
+      {isLoading && (
+        <Dimmer active className="publishing">
+          <Loader />
+          <p>Loading...</p>
+        </Dimmer>
+      )}
+    </Modal>
+  );
 }

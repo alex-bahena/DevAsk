@@ -1,20 +1,21 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const PublicationSchema = Schema({
+const CommentSchema = Schema({
+  idPublication: {
+    type: mongoose.Schema.Types.ObjectId,
+    require: true,
+    ref: "Publication",
+  },
   idUser: {
     type: mongoose.Schema.Types.ObjectId,
     require: true,
     ref: "User",
   },
-  file: {
+  comment: {
     type: String,
     trim: true,
     require: true,
-  },
-  typeFile: {
-    type: String,
-    trim: true,
   },
   createAt: {
     type: Date,
@@ -22,4 +23,4 @@ const PublicationSchema = Schema({
   },
 });
 
-module.exports = mongoose.model("Publication", PublicationSchema);
+module.exports = mongoose.model("Comment", CommentSchema);

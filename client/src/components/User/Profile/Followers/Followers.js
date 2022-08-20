@@ -61,8 +61,8 @@ export default function Followers(props) {
   };
 
   if (loadingFollowers || loadingFolloweds) return null;
-  const { getFollowers } = dataFollowers || 0;
-  const { getFolloweds } = dataFolloweds || 0;
+  const { getFollowers } = dataFollowers || {};
+  const { getFolloweds } = dataFolloweds || {};
 
   return (
     <>
