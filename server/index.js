@@ -7,13 +7,17 @@ const { graphqlUploadExpress } = require("graphql-upload");
 const jwt = require("jsonwebtoken");
 const resolvers = require("./gql/resolver");
 const db = require("./config/connection");
-// const path = require("path");
+const path = require("path");
 const cors = require("cors");
 const PORT = process.env.PORT || 3001;
 require("dotenv").config({ path: ".env" });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+}
 
 const corsOptions = {
   origin: "*",
@@ -29,7 +33,8 @@ const server = new ApolloServer({
   csrfPrevention: true,
   cache: "bounded",
   context: ({ req }) => {
-    const token = req.headers.authorization.split(" ")[1];
+    const token = req.headers.authorization?.split(" ")[1];
+
     if (token) {
       console.log(token);
       try {

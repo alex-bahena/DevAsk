@@ -1,0 +1,9 @@
+@import "../../../scss/index.scss";
+
+.list-users {
+ &__not-users {
+    text-align: center;
+    font-size: 17px;
+    padding: 20px 0px;
+ }
+}

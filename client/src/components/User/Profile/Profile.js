@@ -10,6 +10,7 @@ import AvatarForm from "../AvatarForm";
 import HeaderProfile from "./HeaderProfile";
 import userAuth from "../../../hooks/useAuth";
 import SettignsForm from "../SettignsForm";
+import Followers from "./Followers";
 
 
 export default function Profile(props) {
@@ -67,8 +68,10 @@ export default function Profile(props) {
           <HeaderProfile
             getUser={getUser}
             auth={auth}
-            handlerModal={handlerModal} />
-          <div>Followers</div>
+            handlerModal={handlerModal}/>
+
+          <Followers username = { username }/>
+          
           <div className="other">
             <p className="name">{getUser.name}</p>
             {getUser.siteWeb && (
