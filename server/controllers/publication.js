@@ -36,7 +36,7 @@ async function publish(file, ctx) {
 
 async function getPublications(username) {
   const user = await User.findOne({ username });
-  if (!user) throw new Error("Usuario no encontrado.");
+  if (!user) throw new Error("User not found!");
 
   const publications = await Publication.find()
     .where({ idUser: user._id })
