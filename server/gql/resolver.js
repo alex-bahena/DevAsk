@@ -1,11 +1,12 @@
-// const { UserInputError } = require("apollo-server-express");
+// const { AuthenticationError } = require("apollo-server-express");
 const userController = require("../controllers/user");
-const { GraphQLUpload } = require("graphql-upload")
+const { GraphQLUpload } = require("graphql-upload");
 const followController = require("../controllers/follow");
 const publicationController = require("../controllers/publication")
 // const user = require("../models/user");
 
 const resolvers = {
+
     Upload: GraphQLUpload,
     Query: {
         getUser: (_, { id, username }) => { return userController.getUser(id, username) },
@@ -15,14 +16,22 @@ const resolvers = {
         isFollow: (_, { username }, ctx) =>
             followController.isFollow(username, ctx),
             getFollowers: (_, {username}) => followController.getFollowers(username),
-    },
 
-    Mutation: {
-        register: (_, { input }) => { userController.register(input) },
-        login: (_, { input }) => { return userController.login(input) },
-        updateAvatar: (_, { file }, ctx) => userController.updateAvatar(file, ctx),
-        deleteAvatar: (_, { }, ctx) => userController.deleteAvatar(ctx),
-        updateUser: (_, { input }, ctx) => userController.updateUser(input, ctx),
+    },
+    search: (_, { search }) => userController.search(search),
+  },
+
+  Mutation: {
+    register: (_, { input }) => {
+      userController.register(input);
+    },
+    login: (_, { input }) => {
+      return userController.login(input);
+    },
+    updateAvatar: (_, { file }, ctx) => userController.updateAvatar(file, ctx),
+    deleteAvatar: (_, {}, ctx) => userController.deleteAvatar(ctx),
+    updateUser: (_, { input }, ctx) => userController.updateUser(input, ctx),
+
 
         //Follow
         follow: (_, { username }, ctx) => followController.follow(username, ctx),
@@ -33,4 +42,4 @@ const resolvers = {
     },
 }
 
-module.exports = resolvers
+module.exports = resolvers;
