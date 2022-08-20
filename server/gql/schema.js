@@ -2,7 +2,6 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   scalar Upload
-
   type User {
     id: ID
     name: String
@@ -24,12 +23,18 @@ const typeDefs = gql`
     urlAvatar: String
   }
 
-  input UserInput {
-    name: String!
-    username: String!
-    email: String!
-    password: String!
-  }
+    type Publish {
+        status: Boolean
+        urlFile: String
+    }
+
+    input UserInput {
+        name: String!
+        username: String!
+        email: String!
+        password: String!
+    }
+
 
   input LoginInput {
     email: String!
@@ -49,9 +54,17 @@ const typeDefs = gql`
     # user
     getUser(id: ID, username: String): User
     search(search: String): [User]
-  }
 
-  type Mutation {
+    
+
+    #Follow
+    isFollow(username: String!): Boolean
+    getFollowers(username: String!): [User]
+    }
+
+
+    type Mutation {
+
     #user
     register(input: UserInput): User
     login(input: LoginInput): Token
@@ -61,6 +74,13 @@ const typeDefs = gql`
 
     #Follow
     follow(username: String!): Boolean
-  }
+    unFollow(username: String!): Boolean
+
+    #Publication
+    publish(file: Upload): Publish
+
+    }
+
+    
 `;
 module.exports = typeDefs;

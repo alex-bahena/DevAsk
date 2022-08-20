@@ -29,7 +29,10 @@ const server = new ApolloServer({
   csrfPrevention: true,
   cache: "bounded",
   context: ({ req }) => {
-    const token = req.headers.authorization.split(" ")[1];
+
+    const token = req.headers.authorization?.split(' ')[1];
+
+
     if (token) {
       console.log(token);
       try {
