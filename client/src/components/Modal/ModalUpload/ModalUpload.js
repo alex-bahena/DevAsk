@@ -65,7 +65,7 @@ export default function ModalUpload(props) {
         {!fileUpload && (
           <>
             <Icon name="cloud upload" />
-            <p>Pull your image here</p>
+            <p>Drag your image and drop it over here</p>
           </>
         )}
         <input {...getInputProps()} />
