@@ -3,8 +3,24 @@
 [![Screen-Shot-2022-08-23-at-2-30-04.png](https://i.postimg.cc/hjh8XDdS/Screen-Shot-2022-08-23-at-2-30-04.png)](https://postimg.cc/ZBtvghHg)
 ## The Project
 
+We believe in the power of collaboration, and through Dev-Ask, we aim to bring developers together to collectively solve challenges and drive innovation.
 
-Dev-Ask is an app that aims to ease the interaction between developers to help software engineers solve problems they encounter in their day-to-day. The app allows users to create their own profile, upload images to give context about their problem and comment on posts.
+Overview:
+Dev-Ask is an innovative application conceptualized and prototyped by a dedicated group of developers. Recognizing the challenges that software engineers face on a daily basis, this app seeks to streamline the problem-solving process by fostering real-time collaboration and communication within the developer community.
+
+Key Features:
+
+User Profiles:
+Users can create personalized profiles, showcasing their skills, expertise, and past contributions. This not only builds credibility but also enables other developers to identify and reach out to experts in specific areas.
+
+Image Upload for Context:
+A picture is worth a thousand words. Dev-Ask allows users to easily upload images that can shed light on the challenges they're facing. Whether it's a bug, a UI glitch, or a complex code snippet, visual context can aid in quicker understanding and resolution.
+
+Interactive Commenting System:
+Engage in dynamic discussions! Users can comment on posts, ask follow-up questions, or provide potential solutions. The interactive commenting system promotes active engagement and collaboration.
+
+Real-time Notifications:
+Stay updated with the latest on your queries. Receive real-time notifications when someone comments or offers a solution to your problem.
 
 
 ## Demo
@@ -48,17 +64,18 @@ _Other User Profile_
 
 
 ## Authors
+  ### Product Owner & Back-End Developer
+- [Alejandro Bahena](https://www.github.com/AlejandroBahSan)
+  ### Back-End Developers
+- [Javier Fernández](https://www.github.com/Zhune6)
+- [Javier Vargas](https://www.github.com/JavierVargas97)
+  ### Front-End Developers
+- [Adrian Strozzi](https://www.github.com/adrianstrozzi)
+- [Javier Resines](https://www.github.com/Javierrmsf)
+- [Joaquín Gómez](https://www.github.com/joacogm12)
 
-- [Alejandro Bahena: Back-End/Product Owner](https://www.github.com/AlejandroBahSan)
-- [Javier Fernández: Back-End](https://www.github.com/Zhune6)
-- [Adrian Strozzi: Front-End](https://www.github.com/adrianstrozzi)
-- [Javier Vargas: Back-end](https://www.github.com/JavierVargas97)
-- [Javier Resines: Front-End](https://www.github.com/Javierrmsf)
-- [Joaquín Gómez: Front-End](https://www.github.com/joacogm12)
 
 
-
-## Feedback
-
-If you have any feedback, please reach out to us.
+## Status:
+Currently, Dev-Ask is in its prototype phase, crafted with passion by our developers' group. As a prototype, we're actively seeking feedback and suggestions to refine and enhance the platform to best serve the software engineering community.
 
