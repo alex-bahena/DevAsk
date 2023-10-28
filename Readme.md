@@ -63,7 +63,7 @@ _Other User Profile_
 
 
 
-## Authors
+## Contributors
 ### Product Owner & Back-End Developer
 - [Alejandro Bahena](https://www.github.com/AlejandroBahSan)
 ### Back-End Developers
