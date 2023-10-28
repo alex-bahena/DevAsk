@@ -64,12 +64,12 @@ _Other User Profile_
 
 
 ## Authors
-  ### Product Owner & Back-End Developer
+### Product Owner & Back-End Developer
 - [Alejandro Bahena](https://www.github.com/AlejandroBahSan)
-  ### Back-End Developers
+### Back-End Developers
 - [Javier Fernández](https://www.github.com/Zhune6)
 - [Javier Vargas](https://www.github.com/JavierVargas97)
-  ### Front-End Developers
+### Front-End Developers
 - [Adrian Strozzi](https://www.github.com/adrianstrozzi)
 - [Javier Resines](https://www.github.com/Javierrmsf)
 - [Joaquín Gómez](https://www.github.com/joacogm12)
